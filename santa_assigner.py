@@ -40,34 +40,35 @@ def secret_santa_url(input_string):
     return url_string
 
 
+def main():
+    # Shuffle gifters to create a list of giftees where the name at any index i in
+    # both arrays is not the same.
+    # (A gifter should never be assigned to be their own secret santa.)
+    giftees = []
+    gifter_gifts_self = True
+    while gifter_gifts_self:
 
-# Main Script
+        # Shuffle gifters to create giftee list
+        giftees = random.sample(gifters, len(gifters))
+        num_non_matching_pairs = 0
 
-# Shuffle gifters to create a list of giftees where the name at any index i in
-# both arrays is not the same.
-# (A gifter should never be assigned to be their own secret santa.)
-giftees = []
-gifter_gifts_self = True
-while gifter_gifts_self:
+        for i in range(0,len(gifters)):
+            if gifters[i] != giftees[i]:
+                num_non_matching_pairs += 1
+            # If each gifter in the input list has a giftee
+            # that is NOT themselves, end shuffling
+            if num_non_matching_pairs == len(gifters):
+                gifter_gifts_self = False
 
-    # Shuffle gifters to create giftee list
-    giftees = random.sample(gifters, len(gifters))
-    num_non_matching_pairs = 0
 
+    # Create a list of links to display the giftee's name
+    links = []
+    for name in giftees:
+        links.append(secret_santa_url(name))
+
+    # Print the name of the gifter and their giftee link
     for i in range(0,len(gifters)):
-        if gifters[i] != giftees[i]:
-            num_non_matching_pairs += 1
-        # If each gifter in the input list has a giftee
-        # that is NOT themselves, end shuffling
-        if num_non_matching_pairs == len(gifters):
-            gifter_gifts_self = False
+        print(f"{gifters[i]}'s match is {links[i]}")
 
-
-# Create a list of links to display the giftee's name
-links = []
-for name in giftees:
-    links.append(secret_santa_url(name))
-
-# Print the name of the gifter and their giftee link
-for i in range(0,len(gifters)):
-    print(f"{gifters[i]}'s match is {links[i]}")
+if __name__ == '__main__':
+    main()
