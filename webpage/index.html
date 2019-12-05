@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Secret Santa: Giftee Reveal</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
+<script src="params.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+  #name {
+    font-style: bold;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  #santa {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    max-height: 500px;
+  }
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes example {
+    0%   {color: red;}
+    50%  {color: green;}
+    100% {color: red;}
+  }
+
+  /* Standard syntax */
+  @keyframes example {
+    0%   {color: red;}
+    50%  {color: green;}
+    100% {color: red;}
+  }
+  a {
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="text-center">
+  <h1>You're Secret 🎅 to</h1>
+  <h1 id="name"></h1>
+</div>
+<img src="secret-santa.jpg" id="santa" alt="Responsive image">
+<p class="text-center">Made with ♥️ by <a href="https://www.instagram.com/mallika9">Mallika</a> + <a href="https://www.instagram.com/dasmer">Dasmer</a></p>
+</div>
+</body>
+<script>
+  var url_b64_encoded_name = getAllUrlParams().p
+  document.getElementById("name").innerHTML = atob(decodeURIComponent(url_b64_encoded_name))
+</script>
+</html>
